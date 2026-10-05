@@ -1,0 +1,33 @@
+# local environments and build output
+.venv/
+.python/
+build/
+dist/
+*.spec
+!tools/roughreader.spec
+__pycache__/
+*.pyc
+
+# self-test and diagnostics output
+selftest/
+selftest-exe/
+smoke/
+diagnose*.txt
+
+# a library or settings made by running from here
+RoughReader-Library/
+RoughReader-data/
+
+# local notes and media: never published
+CLAUDE.md
+Claude outputs/
+scheme-previews/
+*.cbz
+*.epub
+*.mobi
+*.azw
+*.azw3
+*.pdf
+*.png
+!roughreader/assets/*.png
+*.jpg
