@@ -9,40 +9,40 @@ organised folder beside the program. Everything runs on your own PC, including t
 
 From the [Releases](../../releases) page:
 
-| Download | What it is |
+| Download | Versions |
 |---|---|
-| **RoughReader-portable** | One file, `RoughReader.exe` (~54 MB). Put it in any folder and run it. Starts in about two seconds (it unpacks itself each time). |
+| **RoughReader-portable** | **//Recommended//** One file, `RoughReader.exe` (~54 MB). Put it in a folder and run it to create your library. |
 | **RoughReader-folder** | The full build: `RoughReader.exe` with its `_internal` folder (~120 MB unpacked). Open the file in a folder of your choice to keep things organized. |
 
 Both are the same program. Neither installs anything: on first run they create, next to the exe,
 `RoughReader-Library\` (your books) and `RoughReader-data\` (settings, progress, highlights), so the whole
-folder can be moved or copied as a unit. The only book that comes with it is the **RoughReader Manual**,
-which opens in RoughReader itself and explains everything in detail.
+folder can be moved or copied as a unit.
+Refer to the **RoughReader Manual**, which opens in RoughReader itself and explains program functionality and use.
 
 Windows 10 or 11, 64-bit.
 
-## What it does
+## Functionality
 
 - **Reads** CBZ comics; PDF and XPS; EPUB, MOBI, AZW, AZW3, PRC, FB2, TXT, Markdown, HTML and Word (DOCX).
   Text books are laid out into pages for your window, font and text size, and keep your place when any
   of those change.
-- **Page by page or scrolling**: single or two pages, right to left for manga, wide scans on their own,
+- **Page by page or scrolling modes**: single or two pages, configurable right to left for manga, wide scans,
   or one continuous column.
 - **Text**: select and copy, highlight in four colours, bookmark pages, follow footnote and cross-reference
-  links (and come back). Scanned PDFs get selectable text through Windows' own OCR.
+  links - persistent across sessions. Scanned PDFs get selectable text through Windows' own OCR, with some limitations.
 - **Contents**: the book's own, or, for PDFs without linked contents, the printed contents page found and
   made clickable, with page numbers mapped to the file's pages.
 - **Library**: copies books in (never touching the originals), sorted into Author \ Work \ versions, so a
   PDF and an EPUB of the same book, or two editions, are one entry. Each book's title and copyright pages
   are read once to find publisher, year, edition, ISBN and translator, and the copy is named
-  `Title, Surname, Publisher, Year`. Everything can be checked and corrected in a Details dialog.
-  Shown as covers or as a sortable list.
-- **Shrinks** comics for your screen (720p to 4K, WebP or AVIF), typically 400 MB to 15-40 MB.
-- Six colour schemes from near-black to white; remappable keys.
+  `Title, Surname, Publisher, Year`. Document attributes can be checked and corrected in a Details dialog.
+  View can be ordered as a list, or with covers.
+- **Compresses and copies** comics for your screen (720p to 4K, WebP or AVIF), at a high compression ratio to save space on disk (400 MB to 15-40 MB).
+- **Six color schemes** to fit your needs, including dark and light variants.
 
 ## Building from source
 
-Needs a standard Python 3.10+ for Windows (not Anaconda).
+Requires standard Python 3.10+ for Windows (not Anaconda).
 
     build.bat                         single-file exe in ..\RoughRider-Portable, then a self-test
     python tools\build_exe.py         folder build in dist\RoughReader
@@ -52,11 +52,6 @@ Needs a standard Python 3.10+ for Windows (not Anaconda).
 
 `setup_env.bat` (used by the .bat files) makes a private `.venv` from a Python already on the PC and
 installs `requirements.txt`: PySide6, Pillow, PyMuPDF, mammoth, Markdown and the Windows OCR bindings.
-
-## Logo
-
-`branding/` holds the logo: an A4 page, a 1280 x 640 banner and a square icon, as SVG (lettering in
-outlines) and PNG, made by `branding/make_logo.py`. `tools/make_icon.py` turns it into the app's icons.
 
 ## Licence
 
