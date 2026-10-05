@@ -1,3 +1,5 @@
+![RoughReader](branding/roughreader-banner.png)
+
 # RoughReader
 
 A (slightly janky) all-in-one offline reader and library manager for Windows: comics, books, academic papers and other writing, kept in one
@@ -50,6 +52,11 @@ Needs a standard Python 3.10+ for Windows (not Anaconda).
 
 `setup_env.bat` (used by the .bat files) makes a private `.venv` from a Python already on the PC and
 installs `requirements.txt`: PySide6, Pillow, PyMuPDF, mammoth, Markdown and the Windows OCR bindings.
+
+## Logo
+
+`branding/` holds the logo: an A4 page, a 1280 x 640 banner and a square icon, as SVG (lettering in
+outlines) and PNG, made by `branding/make_logo.py`. `tools/make_icon.py` turns it into the app's icons.
 
 ## Licence
 

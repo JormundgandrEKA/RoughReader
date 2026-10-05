@@ -35,7 +35,8 @@ a = Analysis(
     [os.path.join(ROOT, "run_roughreader.py")],
     pathex=[ROOT],
     binaries=[],
-    datas=[(os.path.join(ROOT, "roughreader", "assets", "RoughReader Manual.md"), os.path.join("roughreader", "assets"))],
+    datas=[(os.path.join(ROOT, "roughreader", "assets", name), os.path.join("roughreader", "assets"))
+           for name in os.listdir(os.path.join(ROOT, "roughreader", "assets")) if name.endswith((".md", ".png"))],
     hiddenimports=collect_submodules("markdown.extensions") + collect_submodules("winrt") + ["mammoth"],
     hookspath=[],
     hooksconfig={},

@@ -4,10 +4,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from PySide6.QtCore import QPointF, QRectF, Qt
-from PySide6.QtGui import QColor, QFont, QIcon, QPainter, QPalette, QPen, QPixmap, QPolygonF
+import os
+import sys
 
-from . import mark
+from PySide6.QtCore import QPointF, QRectF, QSize, Qt
+from PySide6.QtGui import QColor, QFont, QIcon, QImage, QPainter, QPalette, QPen, QPixmap, QPolygonF
+
 
 # Sizes. Text is a third larger than the first design; things that must hold text grow with it (`u`).
 TEXT_SCALE = 4 / 3
@@ -253,25 +255,36 @@ def draw_icon(p: QPainter, name: str, rect: QRectF, colour: QColor, weight: floa
     p.restore()
 
 
+def asset(name: str) -> str:
+    """A file from roughreader/assets, also inside the built exe."""
+    base = getattr(sys, "_MEIPASS", None)
+    folder = os.path.join(base, "roughreader", "assets") if base else os.path.join(os.path.dirname(__file__), "assets")
+    return os.path.join(folder, name)
+
+
+_mark: QImage | None = None
+
+
 def draw_mark(p: QPainter, rect: QRectF) -> None:
-    """The app mark, scaled into `rect`."""
-    unit = min(rect.width(), rect.height()) / 64.0
+    """The arrow from the logo, fitted into `rect` (placeholder covers, the empty reader)."""
+    global _mark
+    if _mark is None:
+        _mark = QImage(asset("mark.png"))
+    if _mark.isNull():
+        return
+    side = min(rect.width(), rect.height())
+    target = QRectF(rect.center().x() - side / 2, rect.center().y() - side / 2, side, side)
     p.save()
-    p.setRenderHint(QPainter.Antialiasing, True)
-    p.setPen(Qt.NoPen)
-    for points, colour in mark.SHAPES:
-        p.setBrush(QColor(colour))
-        p.drawPolygon(QPolygonF([QPointF(rect.x() + x * unit, rect.y() + y * unit) for x, y in points]))
+    p.setRenderHint(QPainter.SmoothPixmapTransform, True)
+    p.drawImage(target, _mark)
     p.restore()
 
 
 def app_icon() -> QIcon:
+    """The square logo; the bare arrow at the small sizes (made by tools/make_icon.py)."""
     icon = QIcon()
-    for size in (16, 24, 32, 48, 64, 128, 256):
-        pix = QPixmap(size, size)
-        pix.fill(Qt.transparent)
-        painter = QPainter(pix)
-        draw_mark(painter, QRectF(0, 0, size, size))
-        painter.end()
-        icon.addPixmap(pix)
+    for size in (16, 20, 24, 32, 40, 48, 64, 96, 128, 256):
+        path = asset(f"icon-{size}.png")
+        if os.path.exists(path):
+            icon.addFile(path, QSize(size, size))
     return icon

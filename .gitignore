@@ -30,4 +30,5 @@ scheme-previews/
 *.pdf
 *.png
 !roughreader/assets/*.png
+!branding/*.png
 *.jpg
