@@ -1,8 +1,7 @@
 # RoughReader
 
-An offline reader and library for Windows: comics, books, academic papers and other writing, kept in one
-organised folder beside the program. Everything runs on your own PC, including text recognition for
-scanned pages.
+A (slightly janky) all-in-one offline reader and library manager for Windows: comics, books, academic papers and other writing, kept in one
+organised folder beside the program. Everything runs on your own PC, including text recognition for scanned pages for indexing and in-text links.
 
 ## Download
 
@@ -11,7 +10,7 @@ From the [Releases](../../releases) page:
 | Download | What it is |
 |---|---|
 | **RoughReader-portable** | One file, `RoughReader.exe` (~54 MB). Put it in any folder and run it. Starts in about two seconds (it unpacks itself each time). |
-| **RoughReader-folder** | The full build: `RoughReader.exe` with its `_internal` folder (~120 MB unpacked). Starts faster; keep the folder together. |
+| **RoughReader-folder** | The full build: `RoughReader.exe` with its `_internal` folder (~120 MB unpacked). Open the file in a folder of your choice to keep things organized. |
 
 Both are the same program. Neither installs anything: on first run they create, next to the exe,
 `RoughReader-Library\` (your books) and `RoughReader-data\` (settings, progress, highlights), so the whole
